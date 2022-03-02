@@ -6,6 +6,7 @@ public class PrimeNumber {
             //에라스토네테스의 체 사용(효율성 높음)
             //배열에서 1이면 소수, 1이면 세기
             int[] arr = new int[n+1];
+
             for(int i=0; i<=n; i++){
                 arr[i] = i;
             }
