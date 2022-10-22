@@ -1,4 +1,4 @@
-public class theThreeMusketeers {
+public class TheThreeMusketeers {
     static class Solution {
         public int solution(int[] number) {
             int answer = 0;
