@@ -15,11 +15,9 @@ public class DifferentStringArray {
     private static class Solution {
         public int getResult(String t, String p) {
             int count = 0;
-
             for (int i = 0; i <= t.length() - p.length(); i++) {
                 count = Long.parseLong(t.substring(i, i + p.length())) <= Long.parseLong(p) ? count + 1 : count;
             }
-
             return count;
         }
     }
