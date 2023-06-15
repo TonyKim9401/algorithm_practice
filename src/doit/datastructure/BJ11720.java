@@ -12,7 +12,7 @@ public class BJ11720 {
         int sum = 0;
 
         for (char c : cNum) {
-            sum += c - '0';
+            sum += c - '0'; // 48로 대체 가능
         }
         System.out.println("sum = " + sum);
 
