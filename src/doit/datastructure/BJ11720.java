@@ -8,13 +8,11 @@ public class BJ11720 {
         final Scanner sc = new Scanner(System.in);
         final int length = sc.nextInt();
         final String sNum = sc.next();
-        char[] cNum = new char[length];
-
-        cNum = sNum.toCharArray();
+        char[] cNum = sNum.toCharArray();
         int sum = 0;
 
         for (char c : cNum) {
-            sum += c - 48;
+            sum += c - '0';
         }
         System.out.println("sum = " + sum);
 
