@@ -1,7 +1,6 @@
 package programmers;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class FruitsSeller {
 
@@ -9,27 +8,10 @@ public class FruitsSeller {
         public int solution(int k, int m, int[] score) {
             int answer = 0;
 
-            List<Integer> list = Arrays.stream(score).boxed().collect(Collectors.toList());
-            Collections.sort(list);
+            Arrays.sort(score);
 
-            int rest = list.size() % m;
-
-            if(rest > 0){
-                for(int i = 0; i < rest; i++){
-                    list.remove(0);
-                }
-            }
-
-            int count = 0;
-            int[] inBox = new int[m];
-            for(int i = 0; i < list.size(); i++) {
-                inBox[count] = list.get(i);
-                if(count + 1 == m){
-                    answer += Arrays.stream(inBox).min().getAsInt() * m;
-                    count = 0;
-                } else {
-                    count++;
-                }
+            for(int i = score.length; i >= m; i -= m){
+                answer += score[i - m] * m;
             }
 
 
