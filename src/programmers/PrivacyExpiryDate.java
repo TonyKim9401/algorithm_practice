@@ -2,6 +2,7 @@ package programmers;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PrivacyExpiryDate {
     static class Solution {
@@ -19,11 +20,12 @@ public class PrivacyExpiryDate {
             List<Integer> list = new ArrayList<>();
 
 
-            Map<String, Integer> termMap = new HashMap<>();
-            for (String term : terms) {
-                String[] termSplit = term.split(" ");
-                termMap.put(termSplit[0], Integer.parseInt(termSplit[1]));
-            }
+            Map<String, Integer> termMap = Arrays.stream(terms)
+                                            .map(term -> term.split(" "))
+                                            .collect(Collectors.toMap(
+                                                    ts -> ts[0],
+                                                    ts -> Integer.parseInt(ts[1])
+                                            ));
 
             for (String privacy : privacies) {
 
