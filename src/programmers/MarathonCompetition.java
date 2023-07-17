@@ -11,22 +11,22 @@ public class MarathonCompetition {
                 playerMap.put(players[i], i);
             }
 
-            String temp;
+            String front;
             String called;
-            int idx;
-            int idxTemp;
+            int calledIdx;
+            int frontIdx;
 
             for (int i = 0; i < callings.length; i++) {
                 called = callings[i]; // 불린놈
-                idx = playerMap.get(callings[i]); // 불린놈 등수
-                temp = players[idx - 1]; // 앞에놈
-                idxTemp = playerMap.get(temp); // 앞에놈 등수
+                calledIdx = playerMap.get(callings[i]); // 불린놈 등수
+                front = players[calledIdx - 1]; // 앞에놈
+                frontIdx = playerMap.get(front); // 앞에놈 등수
 
-                playerMap.put(called, idxTemp);
-                playerMap.put(temp, idx);
+                playerMap.put(called, frontIdx);
+                playerMap.put(front, calledIdx);
 
-                players[idxTemp] = called;
-                players[idx] = temp;
+                players[frontIdx] = called;
+                players[calledIdx] = front;
             }
 
             return players;
