@@ -11,7 +11,7 @@ public class BiggestNumber {
                 splitNum.add(String.valueOf(num));
             }
 
-            splitNum.sort((o1, o2) -> {
+            splitNum.sort ((o1, o2) -> {
                 String post = o1 + o2;
                 String pre = o2 + o1;
                 return pre.compareTo(post);
