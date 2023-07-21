@@ -1,5 +1,8 @@
 package programmers.codingtest;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BicycleFactory {
     static class Solution {
         public int solution(int[][] cost, int[][] order) {
@@ -23,6 +26,7 @@ public class BicycleFactory {
             }
             망함
             */
+            Queue<Integer> q = new LinkedList<>();
 
 
             return answer;
