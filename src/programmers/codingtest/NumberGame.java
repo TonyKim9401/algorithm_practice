@@ -31,6 +31,10 @@ public class NumberGame {
     }
 
     public static void main(String[] args) {
+
+        int[] a = new int[]{5,1,3,7};
+        IntStream.of(a).max().orElse(0);
+
         Solution solution = new Solution();
         int result = solution.solution(new int[]{5,1,3,7}, new int[]{2,2,6,8});
         System.out.println("result = " + result);
