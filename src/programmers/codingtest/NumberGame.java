@@ -18,14 +18,13 @@ public class NumberGame {
 
             int idx = 0;
             for(int i = 0; i < list.size(); i++) {
-                if(A[idx] < list.get(i)) {
+                if (A[idx] < list.get(i)) {
                     answer += 1;
                     idx += 1;
                     list.remove(i);
                     i -= 1;
                 }
             }
-
 
             return answer;
         }
