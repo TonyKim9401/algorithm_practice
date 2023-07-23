@@ -5,16 +5,18 @@ public class UntilOne {
 
         int answer = 0;
         int N = 25;
-        int k = 3;
+        int k = 4;
 
-        while (N != 1) {
+        while (true) {
+            int target = (N / k) * k;
+            answer += N - target;
+            N = target;
+            if (N < k) break;
             answer += 1;
-            if (N % k != 0) {
-                N -= 1;
-            } else {
-                N /= k;
-            }
+            N /= k;
         }
+
+        answer += N - 1;
 
 
 
