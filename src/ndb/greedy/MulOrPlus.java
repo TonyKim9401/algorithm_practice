@@ -1,4 +1,4 @@
-package ndb;
+package ndb.greedy;
 
 public class MulOrPlus {
     public static void main(String[] args) {

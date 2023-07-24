@@ -1,4 +1,4 @@
-package ndb;
+package ndb.greedy;
 
 public class UntilOne {
     public static void main(String[] args) {

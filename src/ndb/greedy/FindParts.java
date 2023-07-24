@@ -1,4 +1,4 @@
-package ndb;
+package ndb.greedy;
 
 import java.io.*;
 import java.util.*;

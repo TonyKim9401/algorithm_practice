@@ -1,4 +1,4 @@
-package ndb;
+package ndb.greedy;
 
 public class Changes {
     public static void main(String[] args) {
