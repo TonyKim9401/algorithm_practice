@@ -11,8 +11,8 @@ public class NumberGame {
             Arrays.sort(A);
             Arrays.sort(B);
 
-            List<Integer> list = new ArrayList<>();
-            for(int num : B) {
+            List<Integer> list = new LinkedList<>();
+            for (int num : B) {
                 list.add(num);
             }
 

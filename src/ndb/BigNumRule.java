@@ -13,18 +13,12 @@ public class BigNumRule {
 
         Arrays.sort(arr);
         int answer = 0;
+        int count = 0;
+        count += (M / (k + 1)) * k;
+        count += M % (k + 1);
 
-        while(M > 0) {
-
-            for(int i = 0; i < k; i++) {
-                if (M == 0) break;
-                answer += arr[arr.length-1];
-                M -= 1;
-            }
-            if (M == 0) break;
-            answer += arr[arr.length - 2];
-            M -= 1;
-        }
+        answer += count * arr[arr.length - 1];
+        answer += (M - count) * arr[arr.length - 2];
 
         System.out.println(answer);
 
