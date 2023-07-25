@@ -13,6 +13,7 @@ public class InsertSort {
                     unsorted[j] = unsorted[j-1];
                     unsorted[j-1] = temp;
                 }
+                else break;
             }
         }
 
