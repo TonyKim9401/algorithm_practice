@@ -11,23 +11,22 @@ public class QuickSort {
 
         while (left <= right) {
 
-            while (left <= end && target[left] <= target[pivot]){
-                left += 1;
-            }
-            while (right > start && target[right] >= target[pivot]){
-                right -= 1;
-            }
+            while (left <= end && target[pivot] >= target[left]) left += 1;
+            while (right > start && target[pivot] <= target[right]) right -= 1;
+
+            int temp;
             if (left > right) {
-                int temp = target[pivot];
+                temp = target[pivot];
                 target[pivot] = target[right];
-                target[right] = temp;
             } else {
-                int temp = target[right];
-                target[right] = target[left];
-                target[left] = temp;
+                temp = target[left];
+                target[left] = target[right];
             }
-            quickSortImpl(target, start, right - 1);
+            target[right] = temp;
+
+            quickSortImpl(target, start, right -1);
             quickSortImpl(target, right + 1, end);
+
         }
 
     }
