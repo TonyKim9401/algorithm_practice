@@ -5,26 +5,17 @@ import java.util.*;
 public class CountingSort {
     public static void main(String[] args) {
 
-        int[] arr = {7,5,9,0,3,1,6,2,9,1,4,8,0,5,2};
+        int[] arr = {7,5,9,0,3,2,9,4,8,0,5,2};
 
-        Map<Integer, Integer> map = new HashMap<>();
+        int[] cnt = new int[arr.length - 1];
 
-        for (int num : arr) {
-            if (map.get(num) == null) {
-                map.put(num, 1);
-            } else {
-                int count = map.get(num);
-                map.put(num, count += 1);
-            }
+        for (int i = 0; i < arr.length; i++) {
+            cnt[arr[i]] += 1;
         }
 
-        List<Integer> keyList = new ArrayList<>(map.keySet());
-        keyList.sort(Comparator.naturalOrder());
-
-        for (int key : keyList) {
-            int count = map.get(key);
-            for (int i = 0; i < count; i++) {
-                System.out.print(key + " ");
+        for (int i = 0; i < cnt.length; i++) {
+            for (int j = 0; j < cnt[i]; j++) {
+                System.out.print(i + " ");
             }
         }
 
