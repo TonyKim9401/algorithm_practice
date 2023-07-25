@@ -14,17 +14,19 @@ public class QuickSort {
             while (left <= end && target[pivot] >= target[left]) left += 1;
             while (right > start && target[pivot] <= target[right]) right -= 1;
 
-            int temp;
             if (left > right) {
-                temp = target[pivot];
+                int temp = target[pivot];
                 target[pivot] = target[right];
+                target[right] = temp;
             } else {
-                temp = target[left];
+                int temp = target[left];
                 target[left] = target[right];
+                target[right] = temp;
             }
-            target[right] = temp;
 
-            quickSortImpl(target, start, right -1);
+            // right 자리에 pivot값이 들어가 있고
+            // pivot을 포함하지 않는 기준으로 왼쪽, 오른쪽을 나눔
+            quickSortImpl(target, start, right - 1);
             quickSortImpl(target, right + 1, end);
 
         }
