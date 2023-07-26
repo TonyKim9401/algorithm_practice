@@ -1,5 +1,7 @@
 package ndb.sort;
 
+import java.util.stream.IntStream;
+
 public class HowManyX {
     public static void main(String[] args) {
 
@@ -31,6 +33,8 @@ public class HowManyX {
 
         int result = (max2 - max) != 0 ? max2 - max : -1;
         System.out.println(result);
+
+        IntStream.of(arr).max().getAsInt();
 
     }
 }
