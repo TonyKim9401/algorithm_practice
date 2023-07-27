@@ -1,22 +1,26 @@
 package ndb.greedy;
 
+import java.util.*;
+import java.io.*;
+
 public class MulOrPlus {
-    public static void main(String[] args) {
-        int answer = 0 ;
-        String num = "02078";
+    public static void main(String[] args) throws IOException{
 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for(int i = 0; i < num.length(); i++) {
-            int check = num.charAt(i) - '0';
-            if (check <= 1 || answer <= 1) {
-                answer += check;
-                continue;
+        String str = br.readLine();
+        int answer = 0;
+
+        for(int i = 0; i < str.length(); i++) {
+            int num = str.charAt(i) - '0';
+            if (answer == 0 || num == 0 || num == 1) {
+                answer += num;
+            } else {
+                answer *= num;
             }
-            answer *= check;
         }
 
         System.out.println(answer);
-
 
     }
 }
