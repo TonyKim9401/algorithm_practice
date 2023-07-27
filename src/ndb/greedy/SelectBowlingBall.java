@@ -5,19 +5,24 @@ import java.util.Arrays;
 public class SelectBowlingBall {
     public static void main(String[] args) {
 
+
+        int n = 8;
 //        int[] balls = {1, 3, 2, 3, 2};
         int[] balls = {1, 5, 4, 3, 2, 4, 5, 2};
         int count = 0;
 
-        int[] ints = Arrays.stream(balls).distinct().toArray();
+        int[] arr = new int[11];
 
-        for (int i = 1; i < balls.length; i++) {
-            count += i;
+        for (int i = 0; i < balls.length; i++) {
+            arr[balls[i]] += 1;
         }
 
-        int override = balls.length - ints.length;
+        for (int i = 1; i <= balls.length; i++) {
+            n -= arr[i];
+            count += arr[i] * n;
+        }
 
-        System.out.println(count - override);
+        System.out.println(count);
 
     }
 }
