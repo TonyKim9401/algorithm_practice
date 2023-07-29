@@ -5,15 +5,6 @@ import java.io.*;
 
 public class Antenna {
 
-    public static class Ante {
-        int idx;
-        int distance;
-        Ante(int i, int d){
-            idx = i;
-            distance = d;
-        }
-    }
-
     public static void main(String[] args) throws IOException{
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,22 +20,9 @@ public class Antenna {
         //  오름차순으로 정렬
         Arrays.sort(arr);
 
-        List<Ante> list = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++) {
-            int total = 0;
-            for (int j = 0; j < arr.length; j++) {
-                total += Math.abs(arr[j] - arr[i]);
-            }
-            list.add(new Ante(arr[i], total));
-        }
+        // 중간값(아니면 하나 왼쪽)구하기
+        int mid = (arr.length - 1) / 2;
 
-        list.sort((o1, o2) -> {
-            if (o1.distance == o2.distance) {
-                return o1.idx - o2.idx;
-            }
-            return o1.distance - o2.distance;
-        });
-
-        System.out.println(list.get(0).idx);
+        System.out.println(arr[mid]);
     }
 }
