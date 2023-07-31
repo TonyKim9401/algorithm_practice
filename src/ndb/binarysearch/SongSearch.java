@@ -1,87 +1,83 @@
 package ndb.binarysearch;
 
+import java.util.*;
+import java.io.*;
+import java.util.stream.*;
+
 public class SongSearch {
     static class Solution {
         public int[] solution(String[] words, String[] queries) {
             int[] answer = new int[words.length - 1];
 
-            // 이진 탐색으로 queires의 물음표 위치 찾기
+            List<ArrayList<String>> arr = new ArrayList<>();
+            List<ArrayList<String>> reversedArr = new ArrayList<>();
 
-            for (int i = 0; i < queries.length; i++) {
+            for (int i = 0; i < 10001; i++) {
+                arr.add(new ArrayList<>());
+                reversedArr.add(new ArrayList<>());
+            }
 
-                String str = queries[i];
+            // words 길이별로 넣고, 뒤집어서 넣고
+            for (String word : words) {
+                int length = word.length();
+                arr.get(length).add(word);
+                word = (new StringBuffer(word)).reverse().toString();
+                reversedArr.get(length).add(word);
+            }
 
-                int start = 0;
-                int end = str.length() - 1;
-                int lastIdx = 0;
-                int firstIdx = 0;
-                StringBuilder sb = new StringBuilder();
+            //각 리스트별로 오름차순 정렬
+            for (int i = 0; i < 10001; i++) {
+                Collections.sort(arr.get(i));
+                Collections.sort(reversedArr.get(i));
+            }
 
-                if (str.charAt(0) == '?') {
-                    // 맨 앞이 ?로 시작할 경우 마지막 ?의 인덱스 찾기
-                    while (start <= end) {
+            for (String query : queries) {
+
+                if (!query.startsWith("?")) {
+                    List<String> list = arr.get(query.length());
+
+                    String startTemp = query.replaceAll("\\?", "a");
+                    int start = 0;
+                    int end = list.size();
+                    int startIdx = 0;
+
+                    while (start < end) {
                         int mid = (start + end) / 2;
-
-                        if (str.charAt(mid) == '?') {
-                            start = mid + 1;
-                            lastIdx = start;
-                        } else {
-                            end = mid - 1;
+                        if (list.get(mid).compareTo(startTemp) >= 0) {
+                            startIdx = mid;
+                            end = mid;
                         }
-
+                        else start = mid + 1;
                     }
+
+
+                    String endTemp = query.replaceAll("\\?", "z");
+                    int start2 = 0;
+                    int end2 = list.size();
+                    int endIdx = 0;
+
+                    while (start2 < end2) {
+                        int mid = (start2 + end2) / 2;
+                        if (list.get(mid).compareTo(endTemp) > 0) {
+                            endIdx = mid;
+                            end2 = mid;
+                        }
+                        else start2 = mid + 1;
+                    }
+                    System.out.println(query + "\t" + (endIdx + " " + startIdx));
+
                 } else {
-                    // 맨앞이 문자로 시작할 경우 ?의 시작점 찾기
-                    while (start <= end) {
-                        int mid = (start + end) / 2;
 
-                        if (str.charAt(mid) != '?') {
-                            start = mid + 1;
-                            lastIdx = start -1;
-                        } else {
-                            end = mid - 1;
-                        }
-                    }
                 }
-
-                if (str.charAt(0) == '?') {
-                    for (int j = lastIdx; j < str.length(); j++) {
-                        sb.append(str.charAt(j));
-                    }
-                } else {
-                    for (int j = 0; j <= lastIdx; j++) {
-                        sb.append(str.charAt(j));
-                    }
-                }
-
-                String temp = sb.toString();
-                int count = 0;
-                if (str.charAt(0) == '?') {
-                    for (int j = 0; j < words.length; j++) {
-                        if (str.length() == words[j].length()) {
-                            String substring = words[j].substring(lastIdx, words[j].length());
-                            if (temp.equals(substring)) count += 1;
-                        }
-                    }
-                } else {
-                    for (int j = 0; j < words.length; j++) {
-                        if (str.length() == words[j].length()) {
-                            String substring = words[j].substring(0, lastIdx + 1);
-                            if (temp.equals(substring)) count += 1;
-                        }
-                    }
-                }
-
-                answer[i] = count;
 
             }
+
 
             return answer;
         }
     }
 
     public static void main(String[] args) {
-
 
         Solution solution = new Solution();
         int[] result = solution.solution(new String[]{"frodo", "front", "frost", "frozen", "frame", "kakao"},
