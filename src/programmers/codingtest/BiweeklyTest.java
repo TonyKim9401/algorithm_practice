@@ -54,7 +54,6 @@ public class BiweeklyTest {
                     }
                 }
             }
-
             return answer;
         }
     }
