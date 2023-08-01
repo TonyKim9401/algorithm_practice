@@ -69,7 +69,6 @@ public class BiweeklyTest {
             System.out.println(s);
         }
 
-
 //        Solution2 solution2 = new Solution2();
 //        int result = solution2.solution(new int[]{2,3}, new int[]{1,2,3});
 //        int result = solution2.solution(new int[]{3}, new int[]{2,2,3});
