@@ -6,12 +6,12 @@ public class GCD {
         int A = 192;
         int B = 162;
 
-        int result = getGcd(A, B);
+        int result = getGcd(B, A);
         System.out.println(result);
     }
 
     public static int getGcd(int A, int B) {
-        if (A % B != 0) return getGcd(B, A % B);
-        return A;
+        if (A % B == 0) return B;
+        return getGcd(B, A % B);
     }
 }
