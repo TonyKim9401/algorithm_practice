@@ -15,7 +15,7 @@ public class HowManyBrackets {
 
     public static void main(String[] args) {
 
-        int n = 3;
+        int n = 4;
         dfs(1, 0, n);
 
         System.out.println(count);
