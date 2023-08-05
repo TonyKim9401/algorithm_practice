@@ -1,65 +1,63 @@
 package ndb.dfsbfs;
 
-import java.sql.SQLOutput;
 import java.util.*;
 import java.io.*;
 
-public class CitiFind {
-    public static void main(String[] args) throws Exception{
+public class CitiFind{
+    public static int N, M, K, X;
+    public static List<List<Integer>> graph = new ArrayList<>();
+
+    public static void main(String[] args) throws IOException{
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
-        int X = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        K = Integer.parseInt(st.nextToken());
+        X = Integer.parseInt(st.nextToken());
 
-        // 구간 합
-        int[] values = new int[3000001];
-        List<List<Integer>> graph = new ArrayList<>();
-        for (int i = 0; i < values.length; i++) {
+        int[] d = new int[300001];
+
+        // 그래프 초기화
+        for (int i = 0; i <= N; i++) {
             graph.add(new ArrayList<>());
-            values[i] = -1;
+            d[i] = -1;
         }
 
-        // 그래프 채우기
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             graph.get(Integer.parseInt(st.nextToken())).add(Integer.parseInt(st.nextToken()));
         }
 
-
+        //시작 위치 0으로 초기화
+        d[X] = 0;
         Queue<Integer> q = new LinkedList<>();
-        values[X] = 0; // 초기화
-        q.offer(X);
+        q.add(X);
 
         while (!q.isEmpty()) {
-            int city = q.poll();
-            List<Integer> nextCity = graph.get(city);
-            for (int i = 0; i < nextCity.size(); i++) {
-                if (values[nextCity.get(i)] == -1) values[nextCity.get(i)] = values[city] + 1;
-                q.offer(nextCity.get(i));
+            int now = q.poll();
+            List<Integer> cities = graph.get(now);
+            for (int i = 0; i < cities.size(); i++) {
+                int nextCity = cities.get(i);
+                if (d[nextCity] == -1) {
+                    d[nextCity] = d[now] + 1;
+                    q.offer(nextCity);
+                }
             }
-
         }
 
         boolean check = false;
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < values.length; i++) {
-            if (values[i] != -1 && values[i] == K) {
-                result.add(i);
+
+        for (int i = 1; i <= N; i++) {
+            if (d[i] == K) {
+                System.out.println(i);
                 check = true;
             }
         }
 
-        if (!check) {
-            System.out.println(-1);
-        }
-        Collections.sort(result);
-        for (Integer i : result) {
-            System.out.println(i);
-        }
+        if (!check) System.out.println(-1);
+
 
     }
 }
