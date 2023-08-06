@@ -58,7 +58,6 @@ public class CitiFind{
 
         if (!check) System.out.println(-1);
 
-
     }
 }
 
