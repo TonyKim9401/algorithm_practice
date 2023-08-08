@@ -5,41 +5,41 @@ import java.util.*;
 public class Triangle {
     static class Solution {
         public int solution(int[][] triangle) {
-            List<List<Integer>> cal = new ArrayList<>();
+            int[][] cal = new int[triangle.length][];
             for (int i = 0; i < triangle.length; i++) {
-                cal.add(new ArrayList<>());
+                cal[i] = new int[triangle[i].length];
             }
 
             // 맨위 꼭대기 추가
-            cal.get(0).add(triangle[0][0]);
+            cal[0][0] = triangle[0][0];
 
             // 2번째줄 부터 더해가며 Max값 넣기
             for (int i = 0; i < triangle.length - 1; i++) { // 맨 마지막 줄은 채우기만 하면 됨
 
                 int[] nextLine = triangle[i + 1]; // 다음 줄 값 3, 8 / 8, 1, 0
 
-                List<Integer> nowList = cal.get(i);
-                List<Integer> nextList = cal.get(i+1);
+                int[] nowList = cal[i];
+                int[] nextList = cal[i+1];
 
                 // nowList와 nextLine을 조합해 nextList에 채워주기, Math.max 사용
-                for (int k = 0; k < nowList.size(); k++) {
+                for (int j = 0; j < nowList.length; j++) {
                     // 0이면 바로 더해서 내려감
-                    if (k == 0) nextList.add(nowList.get(k) + nextLine[0]);
+                    if (j == 0) nextList[0] = nowList[j] + nextLine[0];
                     else {
                         // 0이 아니면 -1번째, 현재 중 어떤 값이 더 큰지 비교하여 넣음
-                        int a = nowList.get(k) + nextLine[k];
-                        int b = nowList.get(k-1) + nextLine[k];
-                        nextList.add(Math.max(a, b));
+                        int a = nowList[j] + nextLine[j];
+                        int b = nowList[j-1] + nextLine[j];
+                        nextList[j] = Math.max(a, b);
                     }
                 }
-                int idx = nowList.size() - 1;
-                nextList.add(nowList.get(idx) + nextLine[idx + 1]);
+                int idx = nowList.length - 1;
+                nextList[idx+ 1] = nowList[idx] + nextLine[idx + 1];
+                cal[i+1] = nextList;
             }
 
+            int[] lastList = cal[cal.length -1];
 
-
-
-            return Collections.max(cal.get(cal.size()-1));
+            return Arrays.stream(lastList).max().getAsInt();
         }
     }
     public static void main(String[] args) {
