@@ -49,17 +49,17 @@ public class FiveColorCandy {
                 "RRRRR",
                 new int[]{5, 1, 3}
         );*/
-        int[] result = solution.solution(
+        /*int[] result = solution.solution(
                 "RYRYRGPRYRYRBB",
                 new int[]{12, 1, 14, 7}
-        );
+        );*/
         /*int[] result = solution.solution(
                 "BPBRBPBRB",
                 new int[]{3,6,9}
         );*/
 
-        /*String candy = "RYRYRGPRYRYRBB";
-        int[] positions = new int[]{12, 1, 14, 7};
+        String candy = "RYRYRGPRYRYRBB";
+        int[] positions = new int[]{10, 14, 7};
 
         int i = 0; // 기준 사탕 인덱스
         int[] backwardIndices = new int[candy.length()];
@@ -89,10 +89,10 @@ public class FiveColorCandy {
             }
 
             answer[j] = count;
-        }*/
+        }
 
-        for (int i1 : result) {
-            System.out.print(i1 + " ");
+        for (int a : answer) {
+            System.out.print(a + " ");
         }
     }
 
