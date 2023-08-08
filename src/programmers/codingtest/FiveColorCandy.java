@@ -58,8 +58,9 @@ public class FiveColorCandy {
                 new int[]{3,6,9}
         );*/
 
-        String candy = "RYRYRGPRYRYRBB";
-        int[] positions = new int[]{10, 14, 7};
+//        String candy = "RYRYRGPRYRYRBB";
+        String candy = "BPBRBPBRB";
+        int[] positions = new int[]{3,6,9};
 
         int i = 0; // 기준 사탕 인덱스
         int[] backwardIndices = new int[candy.length()];
