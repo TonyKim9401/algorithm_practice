@@ -34,7 +34,6 @@ public class BJ15649 {
 
         for (int i = 0; i < N; i++) {
             if (visit[i] == false) {
-
                 visit[i] = true;
                 arr[depth] = i + 1;
                 dfs(N, M, depth + 1);
