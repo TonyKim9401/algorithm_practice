@@ -25,9 +25,8 @@ public class BJ15650 {
     }
 
     public static void dfs(int at, int depth) {
-
         if (depth == M) {
-            for (int num : arr) {
+            for (int num : arr){
                 System.out.print(num + " ");
             }
             System.out.println();
